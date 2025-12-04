@@ -2,648 +2,135 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello, World — Lumina</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2008 GFC — Revolution, Reaction, Reform</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #040816;
-            --bg-alt: #0a132b;
-            --card: #0e1a35;
-            --glass: rgba(255, 255, 255, 0.06);
-            --text: #e7edf9;
-            --muted: #9fb4d6;
-            --accent: #f59e0b;
-            --accent-2: #22c55e;
-            --stroke: rgba(255, 255, 255, 0.08);
-            --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            color: var(--text);
-            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-            background: radial-gradient(1200px at 10% 20%, rgba(34, 197, 94, 0.08), transparent),
-                        radial-gradient(1400px at 80% 0%, rgba(245, 158, 11, 0.09), transparent),
-                        linear-gradient(135deg, #040816 0%, #0b1530 50%, #050b1c 100%);
-            overflow-x: hidden;
-        }
-
-        .background-orbs::before,
-        .background-orbs::after {
-            content: '';
-            position: absolute;
-            inset: -20% -10%;
-            background: radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.14), transparent 45%),
-                        radial-gradient(circle at 70% 20%, rgba(245, 158, 11, 0.14), transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(53, 162, 255, 0.12), transparent 35%);
-            filter: blur(60px);
-            z-index: -2;
-            animation: float 18s ease-in-out infinite alternate;
-        }
-
-        .background-orbs::after {
-            transform: scale(1.08);
-            opacity: 0.7;
-            animation-duration: 26s;
-        }
-
-        .grain {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
-            mix-blend-mode: soft-light;
-            z-index: 0;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 32px 4vw;
-            position: sticky;
-            top: 0;
-            backdrop-filter: blur(12px);
-            background: linear-gradient(180deg, rgba(4, 8, 22, 0.9), rgba(4, 8, 22, 0.35));
-            border-bottom: 1px solid var(--stroke);
-            z-index: 3;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            font-size: 1rem;
-            text-transform: uppercase;
-        }
-
-        .logo-mark {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--accent) 0%, #ffcf6b 100%);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.45);
-        }
-
-        .logo-mark::after {
-            content: '';
-            position: absolute;
-            inset: 9px;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            transform: rotate(12deg);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            color: var(--muted);
-        }
-
-        nav a {
-            color: inherit;
-            text-decoration: none;
-            font-size: 0.95rem;
-            padding: 8px 12px;
-            border-radius: 999px;
-            transition: all 0.25s ease;
-        }
-
-        nav a:hover {
-            color: var(--text);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .pill {
-            background: rgba(34, 197, 94, 0.08);
-            border: 1px solid rgba(34, 197, 94, 0.35);
-            color: var(--accent-2);
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            letter-spacing: 0.04em;
-        }
-
-        main {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero {
-            padding: 42px 4vw 64px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            align-items: center;
-        }
-
-        .headline {
-            max-width: 640px;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--stroke);
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .eyebrow span {
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        h1 {
-            margin: 18px 0 12px;
-            font-size: clamp(2.6rem, 6vw, 4.6rem);
-            letter-spacing: -0.02em;
-            line-height: 1.05;
-            font-weight: 700;
-        }
-
-        h1 .script {
-            font-family: 'Playfair Display', 'Space Grotesk', serif;
-            font-size: 0.85em;
-            color: #f9d68b;
-        }
-
-        .lede {
-            max-width: 620px;
-            color: var(--muted);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        .actions {
-            display: flex;
-            gap: 14px;
-            margin: 28px 0 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.01em;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
-            color: #0a0c1f;
-            box-shadow: 0 20px 50px rgba(245, 158, 11, 0.35);
-        }
-
-        .btn-primary:hover { transform: translateY(-2px); }
-
-        .btn-ghost {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text);
-            border: 1px solid var(--stroke);
-        }
-
-        .meta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--muted);
-        }
-
-        .meta .dot {
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-        }
-
-        .hero-visual {
-            position: relative;
-            padding: 22px;
-        }
-
-        .floating-card {
-            background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-            border: 1px solid var(--stroke);
-            border-radius: 22px;
-            padding: 28px;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .floating-card::before {
-            content: '';
-            position: absolute;
-            inset: -50% 10% auto auto;
-            width: 260px;
-            height: 260px;
-            background: conic-gradient(from 120deg at 50% 50%, rgba(245, 158, 11, 0.2), rgba(34, 197, 94, 0.18), transparent, transparent);
-            filter: blur(50px);
-            opacity: 0.8;
-        }
-
-        .floating-card::after {
-            content: '';
-            position: absolute;
-            inset: 18px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            pointer-events: none;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-        }
-
-        .mini-card {
-            background: var(--glass);
-            border: 1px solid var(--stroke);
-            border-radius: 14px;
-            padding: 14px;
-            color: var(--text);
-            min-height: 120px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mini-card h3 {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .mini-card p {
-            margin: 8px 0 0;
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .mini-card .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            color: var(--accent-2);
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.5);
-            padding: 6px 10px;
-            border-radius: 999px;
-        }
-
-        .mini-card .badge.alt {
-            color: var(--accent);
-            background: rgba(245, 158, 11, 0.12);
-            border-color: rgba(245, 158, 11, 0.6);
-        }
-
-        .mini-card .corner {
-            position: absolute;
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.24), rgba(34, 197, 94, 0.22));
-            filter: blur(30px);
-            inset: -12px auto auto -8px;
-        }
-
-        .orbit {
-            margin: 18px auto;
-            width: min(90vw, 460px);
-            aspect-ratio: 4 / 3;
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 30px;
-            display: grid;
-            place-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .orbit::before {
-            content: '';
-            position: absolute;
-            inset: 10%;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.2));
-        }
-
-        .planet {
-            width: 110px;
-            height: 110px;
-            border-radius: 28px;
-            background: linear-gradient(160deg, rgba(245, 158, 11, 0.9), rgba(34, 197, 94, 0.8));
-            display: grid;
-            place-items: center;
-            color: #0f1028;
-            font-weight: 700;
-            font-size: 1.3rem;
-            box-shadow: 0 20px 60px rgba(245, 158, 11, 0.35);
-            position: relative;
-            animation: hover 4s ease-in-out infinite;
-        }
-
-        .ring {
-            position: absolute;
-            inset: -10px;
-            border-radius: 34px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            rotate: -12deg;
-            animation: spin 18s linear infinite;
-            opacity: 0.6;
-        }
-
-        .stats {
-            padding: 18px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 16px;
-        }
-
-        .stat {
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 14px;
-            border: 1px solid var(--stroke);
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 1.5rem;
-            color: #fff6d8;
-        }
-
-        .stat span {
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .section {
-            padding: 18px 4vw 80px;
-        }
-
-        .section h2 {
-            font-size: clamp(1.8rem, 3vw, 2.4rem);
-            margin-bottom: 10px;
-        }
-
-        .section p.lede {
-            max-width: 720px;
-        }
-
-        .pill-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 16px;
-        }
-
-        .pill-row .pill {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.12);
-            color: var(--text);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-            margin-top: 24px;
-        }
-
-        .feature-card {
-            padding: 18px;
-            border-radius: 16px;
-            border: 1px solid var(--stroke);
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card .icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--stroke);
-            display: grid;
-            place-items: center;
-            color: #f9d68b;
-            margin-bottom: 12px;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .feature-card h3 {
-            margin: 0 0 6px;
-        }
-
-        .feature-card p {
-            margin: 0;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .feature-card::after {
-            content: '';
-            position: absolute;
-            inset: auto auto -30% -30%;
-            width: 160px;
-            height: 160px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.22), transparent 60%);
-            transform: rotate(-18deg);
-            opacity: 0.7;
-        }
-
-        footer {
-            padding: 24px 4vw 40px;
-            border-top: 1px solid var(--stroke);
-            color: var(--muted);
-            background: linear-gradient(180deg, rgba(14, 26, 53, 0.6), rgba(4, 8, 22, 0.9));
-        }
-
-        footer .row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        @keyframes float {
-            from { transform: translateY(-10px); }
-            to { transform: translateY(16px); }
-        }
-
-        @keyframes hover {
-            0%, 100% { transform: translateY(-6px) rotate(-2deg); }
-            50% { transform: translateY(6px) rotate(2deg); }
-        }
-
-        @keyframes spin {
-            to { rotate: 348deg; }
-        }
-
-        @media (max-width: 720px) {
-            header { padding: 20px 6vw; }
-            .hero { padding: 28px 6vw 60px; }
-            .section { padding: 12px 6vw 70px; }
-            .actions { width: 100%; }
-            .btn { flex: 1 1 160px; text-align: center; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="background-orbs">
     <div class="grain"></div>
     <header>
         <div class="logo">
             <div class="logo-mark"></div>
-            LUMINA
+            GFC NHD
         </div>
         <nav>
-            <a href="#hello">Hello</a>
-            <a href="#features">Highlights</a>
-            <a href="#story">Story</a>
-            <span class="pill">Polished & Playful</span>
+            <a href="hello.html" class="active">Home</a>
+            <a href="revolution.html">Revolution</a>
+            <a href="reaction.html">Reaction</a>
+            <a href="reform.html">Reform</a>
+            <span class="pill">Word cap: 1350</span>
         </nav>
     </header>
 
     <main>
-        <section class="hero" id="hello">
+        <section class="hero" id="top">
             <div class="headline">
-                <div class="eyebrow"><span></span> Crafted by hand</div>
-                <h1>Hello, World <span class="script">— welcome to the glow.</span></h1>
-                <p class="lede">A single page, dressed to the nines. Thoughtful typography, immersive color, subtle glass, and playful motion make this “Hello” feel like a destination, not a placeholder.</p>
+                <div class="eyebrow"><span></span> National History Day — Revolution, Reaction, Reform</div>
+                <h1>2008 Global Financial Crisis <span class="script">Revolution. Reaction. Reform.</span></h1>
+                <p class="lede">Mortgage innovation and shadow banking set up a crash; governments and households scrambled; reforms tried to prevent the next shock.</p>
                 <div class="actions">
-                    <button class="btn btn-primary">Experience the magic</button>
-                    <button class="btn btn-ghost">See how it was styled</button>
+                    <a class="btn btn-primary" href="revolution.html">Start with Revolution</a>
+                    <a class="btn btn-ghost" href="#timeline">Jump to timeline</a>
                 </div>
                 <div class="meta">
                     <div class="dot"></div>
-                    No frameworks, just artisanal HTML & CSS.
+                    Concise storytelling across four linked pages, all under 1350 words.
                 </div>
                 <div class="stats">
-                    <div class="stat"><strong>4.6s</strong><span>Animated arrival</span></div>
-                    <div class="stat"><strong>∞</strong><span>Layers of light</span></div>
-                    <div class="stat"><strong>100%</strong><span>Mobile-ready</span></div>
-                    <div class="stat"><strong>0</strong><span>Dependencies required</span></div>
+                    <div class="stat"><strong>$8T</strong><span>Global equity value lost in 2008</span></div>
+                    <div class="stat"><strong>8.7M</strong><span>U.S. jobs lost 2008–2010</span></div>
+                    <div class="stat"><strong>$700B</strong><span>TARP rescue authority</span></div>
+                    <div class="stat"><strong>2010</strong><span>Dodd-Frank signed into law</span></div>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="floating-card">
                     <div class="orbit">
                         <div class="ring"></div>
-                        <div class="planet">Hello</div>
+                        <div class="planet">GFC 2008</div>
                     </div>
                     <div class="card-grid">
                         <div class="mini-card">
                             <div class="corner"></div>
-                            <div class="badge">Glow ready</div>
-                            <h3>Gradient air</h3>
-                            <p>Layered light, soft noise, and gently breathing shapes make the page feel alive.</p>
+                            <div class="badge">Revolution</div>
+                            <h3>Risk moved into the shadows</h3>
+                            <p>Securitization and leverage rewired finance faster than oversight could follow.</p>
                         </div>
                         <div class="mini-card">
                             <div class="corner"></div>
-                            <div class="badge alt">Story rich</div>
-                            <h3>Intentional words</h3>
-                            <p>Every sentence is tuned to celebrate your “Hello” while keeping it crisp.</p>
+                            <div class="badge alt">Reaction</div>
+                            <h3>Panic and rescue</h3>
+                            <p>Confidence collapsed; liquidity froze; leaders faced hard choices in days.</p>
                         </div>
                         <div class="mini-card">
                             <div class="corner"></div>
-                            <div class="badge">Responsive</div>
-                            <h3>Mobile poise</h3>
-                            <p>Adaptive grid, roomy tap targets, and typography that scales with grace.</p>
+                            <div class="badge">Reform</div>
+                            <h3>New guardrails</h3>
+                            <p>Capital rules, consumer protections, and stress tests rebuilt trust and sparked debate.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="features">
-            <h2>Highlights that shimmer</h2>
-            <p class="lede">Color without chaos, movement without distraction. Everything here is tuned to feel intentional, bold, and delightfully luminous.</p>
+        <section class="section" id="overview">
+            <h2>Why this crisis fits the NHD theme</h2>
+            <p class="lede">Mortgage innovation and global capital revolutionized lending. Panic and government action followed. Reforms sought stability with growth, and their tradeoffs still shape policy.</p>
             <div class="pill-row">
-                <span class="pill">Warm amber & fresh jade</span>
-                <span class="pill">Glassmorphism without clutter</span>
-                <span class="pill">Conic glows & dashed orbits</span>
-                <span class="pill">Sticky header polish</span>
+                <span class="pill">Revolution: subprime surge + complex securities</span>
+                <span class="pill">Reaction: market freeze + emergency liquidity</span>
+                <span class="pill">Reform: Dodd-Frank + Basel III</span>
             </div>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="icon">A</div>
-                    <h3>Atmospheric Canvas</h3>
-                    <p>Stacked radial gradients, soft grain, and drifting light orbs build a cinematic backdrop that makes “Hello” feel like a moment.</p>
+                    <div class="icon">R₁</div>
+                    <h3>Mortgage revolution</h3>
+                    <p>Low rates, broker-driven lending, and securitization pooled risky loans into AAA slices, hiding fragility.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="icon">T</div>
-                    <h3>Typography Story</h3>
-                    <p>Space Grotesk keeps things modern while Playfair adds a hint of editorial flourish, balancing precision with warmth.</p>
+                    <div class="icon">R₂</div>
+                    <h3>Global reaction</h3>
+                    <p>Runs on money markets and a frozen interbank system forced joint central-bank interventions.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="icon">M</div>
-                    <h3>Motion with Restraint</h3>
-                    <p>Breathing cards, floating orbits, and slow spins add life to the layout without ever stealing focus from the words.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">C</div>
-                    <h3>Considered Contrast</h3>
-                    <p>Dark sapphire foundations, golden sparks, and jade accents deliver clarity, accessibility, and a confident glow.</p>
+                    <div class="icon">R₃</div>
+                    <h3>Reform debates</h3>
+                    <p>New oversight curbed leverage and protected consumers, yet critics warn of moral hazard.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="story">
-            <h2>Why this “Hello” is different</h2>
-            <p class="lede">It’s not just a greeting—it’s an invitation. The layout invites curiosity, the textures reward a second look, and the micro-animations keep it feeling alive.</p>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="icon">G</div>
-                    <h3>Goodbye Boring Defaults</h3>
-                    <p>No default fonts, no flat backdrops, no off-the-shelf look. Everything is bespoke to keep your hello unforgettable.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">R</div>
-                    <h3>Ready for Any Screen</h3>
-                    <p>Auto-fit grids, flexible buttons, and typography that scales ensure the experience stays luxe on phones and desktops alike.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">H</div>
-                    <h3>Handcrafted Glow</h3>
-                    <p>From conic flares to dashed orbits, the visual language is distinctive yet purposeful, making the simplest message shine.</p>
-                </div>
+        <section class="section" id="timeline">
+            <h2>Flash timeline</h2>
+            <p class="lede">Key moments that show the pivot from financial revolution to crisis reaction and reform.</p>
+            <div class="timeline">
+                <div class="timeline-item"><strong>2001–2006:</strong> Low rates and light regulation fuel a housing boom and record subprime issuance.</div>
+                <div class="timeline-item"><strong>Aug 2007:</strong> Funds holding mortgage securities halt withdrawals; interbank lending seizes, exposing hidden links.</div>
+                <div class="timeline-item"><strong>Sept 15, 2008:</strong> Lehman Brothers fails, triggering global panic and fire-sale devaluations.</div>
+                <div class="timeline-item"><strong>Oct 3, 2008:</strong> TARP passes to stabilize banks; the Fed opens swap lines abroad.</div>
+                <div class="timeline-item"><strong>2010–2011:</strong> Dodd-Frank, the Volcker Rule, and Basel III begin reshaping bank balance sheets.</div>
+            </div>
+            <div class="quote">“The crisis made clear that modern finance had outpaced modern oversight.” — Federal Reserve testimony, 2010</div>
+        </section>
+
+        <section class="section" id="sources">
+            <h2>Sources to explore</h2>
+            <div class="source-list">
+                <div>Financial Crisis Inquiry Commission Report (2011)</div>
+                <div>Federal Reserve Board, “The Financial Crisis” overview</div>
+                <div>U.S. Treasury, TARP Monthly Reports (2008–2010)</div>
+                <div>Bank for International Settlements, Basel III framework</div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="row">
-            <div>Made with luminous care for a perfect “Hello”.</div>
-            <div>Stay radiant.</div>
+            <div>Built for NHD: Revolution, Reaction, Reform.</div>
+            <div>Next stop: <a href="revolution.html">Revolution</a></div>
         </div>
     </footer>
 </body>

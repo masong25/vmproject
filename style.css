@@ -1,14 +1,14 @@
 :root {
-    --bg: #040816;
-    --bg-alt: #0a132b;
-    --card: rgba(255, 255, 255, 0.04);
-    --glass: rgba(255, 255, 255, 0.08);
-    --text: #e7edf9;
-    --muted: #9fb4d6;
-    --accent: #f59e0b;
-    --accent-2: #22c55e;
-    --stroke: rgba(255, 255, 255, 0.08);
-    --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    --bg: #0b1119;
+    --bg-alt: #111927;
+    --card: rgba(255, 255, 255, 0.03);
+    --glass: rgba(255, 255, 255, 0.06);
+    --text: #e5ebf5;
+    --muted: #9fb2cb;
+    --accent: #60a5fa;
+    --accent-2: #fbbf24;
+    --stroke: rgba(255, 255, 255, 0.06);
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -20,9 +20,10 @@ body {
     min-height: 100vh;
     color: var(--text);
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-    background: radial-gradient(1200px at 10% 20%, rgba(34, 197, 94, 0.08), transparent),
-                radial-gradient(1400px at 80% 0%, rgba(245, 158, 11, 0.09), transparent),
-                linear-gradient(135deg, #040816 0%, #0b1530 50%, #050b1c 100%);
+    background:
+        radial-gradient(1200px at 12% 18%, rgba(96, 165, 250, 0.12), transparent),
+        radial-gradient(1400px at 82% 8%, rgba(251, 191, 36, 0.08), transparent),
+        linear-gradient(135deg, #0b1119 0%, #0e1622 45%, #0b1119 100%);
     overflow-x: hidden;
 }
 
@@ -35,10 +36,11 @@ a {
     content: '';
     position: absolute;
     inset: -20% -10%;
-    background: radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.14), transparent 45%),
-                radial-gradient(circle at 70% 20%, rgba(245, 158, 11, 0.14), transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(53, 162, 255, 0.12), transparent 35%);
-    filter: blur(60px);
+    background:
+        radial-gradient(circle at 25% 35%, rgba(96, 165, 250, 0.12), transparent 45%),
+        radial-gradient(circle at 70% 18%, rgba(14, 165, 233, 0.1), transparent 40%),
+        radial-gradient(circle at 80% 78%, rgba(148, 163, 184, 0.12), transparent 35%);
+    filter: blur(70px);
     z-index: -2;
     animation: float 18s ease-in-out infinite alternate;
 }
@@ -85,9 +87,9 @@ header {
     width: 34px;
     height: 34px;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--accent) 0%, #ffcf6b 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, #7dd3fc 100%);
     position: relative;
-    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.45);
+    box-shadow: 0 10px 30px rgba(96, 165, 250, 0.35);
 }
 
 .logo-mark::after {
@@ -122,9 +124,9 @@ nav a.active {
 }
 
 .pill {
-    background: rgba(34, 197, 94, 0.08);
-    border: 1px solid rgba(34, 197, 94, 0.35);
-    color: var(--accent-2);
+    background: rgba(96, 165, 250, 0.08);
+    border: 1px solid rgba(96, 165, 250, 0.35);
+    color: var(--accent);
     padding: 8px 14px;
     border-radius: 999px;
     font-size: 0.85rem;
@@ -214,9 +216,9 @@ p.lede {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
-    color: #0a0c1f;
-    box-shadow: 0 20px 50px rgba(245, 158, 11, 0.35);
+    background: linear-gradient(135deg, var(--accent) 0%, #93c5fd 100%);
+    color: #0b101a;
+    box-shadow: 0 18px 45px rgba(96, 165, 250, 0.35);
 }
 
 .btn-primary:hover {
@@ -224,7 +226,7 @@ p.lede {
 }
 
 .btn-ghost {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     color: var(--text);
     border: 1px solid var(--stroke);
 }
@@ -249,7 +251,7 @@ p.lede {
 }
 
 .floating-card {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
     border: 1px solid var(--stroke);
     border-radius: 22px;
     padding: 28px;
@@ -264,8 +266,8 @@ p.lede {
     inset: -50% 10% auto auto;
     width: 260px;
     height: 260px;
-    background: conic-gradient(from 120deg at 50% 50%, rgba(245, 158, 11, 0.2), rgba(34, 197, 94, 0.18), transparent, transparent);
-    filter: blur(50px);
+    background: conic-gradient(from 120deg at 50% 50%, rgba(96, 165, 250, 0.18), rgba(125, 211, 252, 0.14), transparent, transparent);
+    filter: blur(55px);
     opacity: 0.8;
 }
 
@@ -313,17 +315,17 @@ p.lede {
     align-items: center;
     gap: 6px;
     font-size: 0.85rem;
-    color: var(--accent-2);
-    background: rgba(34, 197, 94, 0.1);
-    border: 1px solid rgba(34, 197, 94, 0.5);
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     padding: 6px 10px;
     border-radius: 999px;
 }
 
 .mini-card .badge.alt {
     color: var(--accent);
-    background: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.6);
+    background: rgba(96, 165, 250, 0.12);
+    border-color: rgba(96, 165, 250, 0.4);
 }
 
 .mini-card .corner {
@@ -331,9 +333,87 @@ p.lede {
     width: 46px;
     height: 46px;
     border-radius: 14px;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.24), rgba(34, 197, 94, 0.22));
-    filter: blur(30px);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(148, 163, 184, 0.22));
+    filter: blur(28px);
     inset: -12px auto auto -8px;
+}
+
+.chart-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--stroke);
+    border-radius: 16px;
+    padding: 14px 14px 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+}
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.chart-grid {
+    margin: 12px 0 10px;
+    height: 170px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke);
+    background:
+        linear-gradient(transparent 74%, rgba(255, 255, 255, 0.05) 75%),
+        linear-gradient(transparent 49%, rgba(255, 255, 255, 0.05) 50%),
+        linear-gradient(transparent 24%, rgba(255, 255, 255, 0.05) 25%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 100% 33%, 100% 50%, 100% 25%, 20% 100%;
+    padding: 12px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.chart-grid.small {
+    height: 130px;
+}
+
+.chart-bars {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    align-items: end;
+    width: 100%;
+}
+
+.bar {
+    position: relative;
+    height: 40%;
+    border-radius: 10px 10px 6px 6px;
+    background: linear-gradient(180deg, rgba(96, 165, 250, 0.9), rgba(12, 74, 110, 0.2));
+    border: 1px solid rgba(96, 165, 250, 0.5);
+    box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+}
+
+.bar.alt {
+    background: linear-gradient(180deg, rgba(251, 191, 36, 0.9), rgba(120, 53, 15, 0.15));
+    border-color: rgba(251, 191, 36, 0.5);
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.22);
+}
+
+.bar-label {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text);
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 0.85rem;
 }
 
 .orbit {
@@ -361,13 +441,13 @@ p.lede {
     width: 110px;
     height: 110px;
     border-radius: 28px;
-    background: linear-gradient(160deg, rgba(245, 158, 11, 0.9), rgba(34, 197, 94, 0.8));
+    background: linear-gradient(160deg, rgba(96, 165, 250, 0.9), rgba(148, 163, 184, 0.9));
     display: grid;
     place-items: center;
-    color: #0f1028;
+    color: #0b101a;
     font-weight: 700;
     font-size: 1.3rem;
-    box-shadow: 0 20px 60px rgba(245, 158, 11, 0.35);
+    box-shadow: 0 20px 60px rgba(96, 165, 250, 0.35);
     position: relative;
     animation: hover 4s ease-in-out infinite;
 }
@@ -399,7 +479,7 @@ p.lede {
 .stat strong {
     display: block;
     font-size: 1.5rem;
-    color: #fff6d8;
+    color: #dbeafe;
 }
 
 .stat span {
@@ -448,7 +528,7 @@ p.lede {
     border: 1px solid var(--stroke);
     display: grid;
     place-items: center;
-    color: #f9d68b;
+    color: var(--accent);
     margin-bottom: 12px;
     font-weight: 700;
     font-size: 1.1rem;

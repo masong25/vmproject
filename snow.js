@@ -11,12 +11,26 @@
     if (saved && typeof saved === 'object') settings = { ...settings, ...saved };
   } catch (err) {}
 
+  const decorDefaults = { lights: true, workshop: false, cozy: false };
+  let decor = { ...decorDefaults };
+  try {
+    const savedDecor = JSON.parse(localStorage.getItem('polar-decor-settings') || 'null');
+    if (savedDecor && typeof savedDecor === 'object') decor = { ...decor, ...savedDecor };
+  } catch (err) {}
+
   const slider = document.getElementById('snow-amount');
   const windToggle = document.getElementById('wind-toggle');
   const blizzardToggle = document.getElementById('blizzard-toggle');
   const burstBtn = document.getElementById('burst-btn');
   const colorBtn = document.getElementById('color-btn');
   const flakeCounter = document.getElementById('flake-count');
+  const lightsBtn = document.getElementById('lights-btn');
+  const twinkleBtn = document.getElementById('twinkle-btn');
+  const workshopBtn = document.getElementById('workshop-btn');
+  const cozyBtn = document.getElementById('cozy-btn');
+  const garland = document.getElementById('garland');
+  const workshopBg = document.getElementById('workshop-bg');
+  const body = document.body;
 
   const quotes = [
     '"The best way to spread Christmas cheer is singing loud for all to hear." — Elf',
@@ -98,19 +112,34 @@
     });
   }
 
+  function saveDecor() {
+    localStorage.setItem('polar-decor-settings', JSON.stringify(decor));
+  }
+
+  function syncDecor() {
+    if (garland) {
+      garland.classList.toggle('off', !decor.lights);
+    }
+    body.classList.toggle('lights-off', !decor.lights);
+    body.classList.toggle('lights-on', decor.lights);
+    body.classList.toggle('workshop-on', decor.workshop);
+    if (workshopBg) workshopBg.classList.toggle('active', decor.workshop);
+    body.classList.toggle('cozy', decor.cozy);
+  }
+
   let flakes = [];
   let angle = 0;
   let palette = [
     'rgba(255,255,255,0.9)',
-    'rgba(108,243,197,0.8)',
-    'rgba(255,73,109,0.8)',
-    'rgba(102,167,255,0.8)'
+    'rgba(225,59,63,0.85)',
+    'rgba(31,191,104,0.85)',
+    'rgba(240,199,94,0.85)'
   ];
 
   const cyclePalette = [
-    ['rgba(255,255,255,0.9)', 'rgba(108,243,197,0.85)'],
-    ['rgba(255,73,109,0.85)', 'rgba(102,167,255,0.85)'],
-    ['rgba(255,255,255,0.9)', 'rgba(245,215,110,0.9)']
+    ['rgba(255,255,255,0.9)', 'rgba(31,191,104,0.85)'],
+    ['rgba(225,59,63,0.88)', 'rgba(240,199,94,0.9)'],
+    ['rgba(255,255,255,0.9)', 'rgba(225,59,63,0.88)']
   ];
   let paletteIndex = 0;
   let paletteTimer = null;
@@ -209,9 +238,9 @@
     paletteTimer = null;
     palette = [
       'rgba(255,255,255,0.9)',
-      'rgba(108,243,197,0.8)',
-      'rgba(255,73,109,0.8)',
-      'rgba(102,167,255,0.8)'
+      'rgba(225,59,63,0.85)',
+      'rgba(31,191,104,0.85)',
+      'rgba(240,199,94,0.85)'
     ];
   }
 
@@ -253,6 +282,37 @@
         saveSettings();
       });
     }
+    if (lightsBtn) {
+      lightsBtn.addEventListener('click', () => {
+        decor.lights = !decor.lights;
+        saveDecor();
+        syncDecor();
+      });
+    }
+    if (twinkleBtn) {
+      twinkleBtn.addEventListener('click', () => {
+        body.classList.add('lights-twinkle');
+        if (garland) garland.classList.add('twinkle');
+        setTimeout(() => {
+          body.classList.remove('lights-twinkle');
+          if (garland) garland.classList.remove('twinkle');
+        }, 2600);
+      });
+    }
+    if (workshopBtn) {
+      workshopBtn.addEventListener('click', () => {
+        decor.workshop = !decor.workshop;
+        saveDecor();
+        syncDecor();
+      });
+    }
+    if (cozyBtn) {
+      cozyBtn.addEventListener('click', () => {
+        decor.cozy = !decor.cozy;
+        saveDecor();
+        syncDecor();
+      });
+    }
     window.addEventListener('click', (e) => {
       const target = e.target;
       if (target && (target.tagName === 'BUTTON' || target.tagName === 'INPUT' || target.closest('button'))) return;
@@ -269,4 +329,5 @@
   animate();
   updateCountdown();
   setInterval(updateCountdown, 1000);
+  syncDecor();
 })();

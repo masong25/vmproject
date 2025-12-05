@@ -12,7 +12,18 @@
 </head>
 <body>
   <div class="background-aurora"></div>
+  <div class="workshop-bg" id="workshop-bg"></div>
   <canvas id="snow"></canvas>
+  <div class="garland" id="garland" aria-hidden="true">
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light gold"></div>
+    <div class="light blue"></div>
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light gold"></div>
+    <div class="light blue"></div>
+  </div>
   <div class="floating-countdown" aria-live="polite">
     <h4>Countdown to Christmas</h4>
     <div class="countdown-grid">
@@ -42,6 +53,14 @@
         <a class="btn primary" href="#recipes">Shuffle specials</a>
       </div>
     </header>
+    <div class="decor-controls">
+      <button class="btn" id="lights-btn">Toggle lights</button>
+      <button class="btn ghost" id="twinkle-btn">Twinkle boost</button>
+      <button class="btn ghost" id="workshop-btn">Workshop backdrop</button>
+      <button class="btn" id="cozy-btn">Cozy tone</button>
+      <button class="btn" id="burst-btn">Snow burst</button>
+      <button class="btn ghost" id="color-btn">Cycle snow colors</button>
+    </div>
 
     <section class="hero" id="top">
       <div class="glow"></div>

@@ -117,6 +117,152 @@
     localStorage.setItem('polar-decor-settings', JSON.stringify(decor));
   }
 
+  const tributeQuotes = {
+    homealone: [
+      '"This is my house, I have to defend it."',
+      '"Keep the change, ya filthy animal."',
+      '"Guys, I\'m eating junk and watching rubbish. You better come out and stop me!"',
+      '"Buzz, your girlfriend. Woof!"',
+      '"I made my family disappear."',
+      '"Fuller, go easy on the Pepsi."',
+      '"I\'m not afraid anymore!"',
+      '"He\'s a kid. Kids are stupid."',
+      '"Look what you did, you little jerk."',
+      '"Is this toothbrush approved by the American Dental Association?"'
+    ],
+    homealone2: [
+      '"Merry Christmas, ya filthy animal."',
+      '"Credit card? You got it!"',
+      '"Nobody throws bricks at me and gets away with it!"',
+      '"Hello, this is Peter McCallister, the father."',
+      '"We never lose our luggage."',
+      '"I\'d like a room with a giant bed, and a TV with some channels."',
+      '"Stay out of trouble."',
+      '"A limo and a pizza, compliments of the Plaza."',
+      '"Suck brick, kid!"',
+      '"You were here, and you were smooching with my brother!"'
+    ],
+    elf: [
+      '"The best way to spread Christmas cheer is singing loud for all to hear."',
+      '"I just like to smile. Smiling\'s my favorite."',
+      '"You sit on a throne of lies!"',
+      '"I\'m a cotton-headed ninny muggins."',
+      '"We elves try to stick to the four main food groups: candy, candy canes, candy corns, and syrup."',
+      '"Francisco! That\'s fun to say!"',
+      '"I\'m sorry I ruined your lives and crammed 11 cookies into the VCR."',
+      '"I passed through the seven levels of the Candy Cane forest."',
+      '"Congratulations! World\'s best cup of coffee!"',
+      '"Son of a nutcracker!"'
+    ],
+    vacation: [
+      '"We checked every bulb, didn’t we?"',
+      '"Hallelujah! Holy— where’s the Tylenol?"',
+      '"You serious, Clark?"',
+      '"If that thing had nine lives, she just spent ’em all."',
+      '"Grace? She passed away thirty years ago."',
+      '"Burn some dust here. Eat my rubber."',
+      '"Where do you think you\'re going? Nobody\'s leaving."',
+      '"Little lights, little lights, uh— not twinkling."',
+      '"It\'s the gift that keeps on giving the whole year."',
+      '"Clark, stop it! I don’t want to spend the holidays dead."'
+    ],
+    santaclause: [
+      '"Seeing isn’t believing. Believing is seeing."',
+      '"We’re your worst nightmare—elves with attitude."',
+      '"Just because you can’t see something, doesn’t mean it doesn’t exist."',
+      '"You killed him." "Did not!"',
+      '"In putting on the suit and entering the sleigh, the wearer waives any and all rights."',
+      '"We used to burn them, but nowadays it\'s politically incorrect."',
+      '"Cookie?"',
+      '"You’re the new Santa."',
+      '"Elves with attitude!"',
+      '"It\'s Santa. He\'s not even married."'
+    ],
+    grinch: [
+      '"Hate, hate, hate. Double hate. Loathe entirely."',
+      '"It came without ribbons. It came without tags."',
+      '"Maybe Christmas doesn’t come from a store."',
+      '"Am I just eating because I’m bored?"',
+      '"The nerve of those Whos. Inviting me down there—and on such short notice!"',
+      '"Cheer up, dude. It’s Christmas."',
+      '"Oh, the noise! Noise! Noise! Noise!"',
+      '"I\'m speaking in rhyme!"',
+      '"Today was... great!"',
+      '"Six o\'clock, dinner with me. I can’t cancel that again."'
+    ],
+    wonderful: [
+      '"No man is a failure who has friends."',
+      '"Every time a bell rings, an angel gets his wings."',
+      '"I want to live again."',
+      '"Look, Daddy. Teacher says every time a bell rings, an angel gets his wings."',
+      '"You want the moon? Just say the word and I’ll throw a lasso around it."',
+      '"Strange, isn’t it? Each man’s life touches so many other lives."',
+      '"Attaboy, Clarence!"',
+      '"This is a very interesting situation!"',
+      '"Why must you torture the children?"',
+      '"Remember, George: no man is a failure who has friends."'
+    ],
+    polar: [
+      '"The bell still rings for me."',
+      '"Seeing is believing, but sometimes the most real things in the world are the things we can’t see."',
+      '"One thing about trains: It doesn’t matter where they’re going. What matters is deciding to get on."',
+      '"Sometimes the most real things in the world are the things we can’t see."',
+      '"Here we only got one rule: never ever let it cool."',
+      '"The thing about trains... it doesn’t matter where they’re going."',
+      '"All aboard!"',
+      '"Seeing is believing."',
+      '"The first gift of Christmas!"',
+      '"I believe."'
+    ],
+    miracle: [
+      '"Faith is believing when common sense tells you not to."',
+      '"I believe... I believe... It’s silly, but I believe."',
+      '"Oh, Christmas isn’t just a day, it’s a frame of mind."',
+      '"Do you believe in Santa Claus?"',
+      '"I speak French but not well."',
+      '"You’re taking this all down in shorthand, aren’t you?"',
+      '"I\'m not just a whimsical figure who wears a charming suit and affects a jolly demeanor."',
+      '"All my life I\'ve wondered something."',
+      '"Imagine Christmas in your heart."',
+      '"If you can\'t accept anything on faith, then you\'re doomed."'
+    ],
+    klaus: [
+      '"A true act of goodwill always sparks another."',
+      '"A simple act of kindness always sparks another."',
+      '"If you hadn’t been so selfish, none of this would have happened."',
+      '"Desperate times call for desperate measures."',
+      '"You are not the only one who has ever been left alone."',
+      '"By doing good deeds, we make ourselves and others happier."',
+      '"We need to be careful with what we say to people."',
+      '"Dear Mr. Klaus..."',
+      '"This is how we change things."',
+      '"Just a postman and a toymaker."'
+    ]
+  };
+
+  function bindTributeQuotes() {
+    const buttons = document.querySelectorAll('.tribute-quote-btn');
+    buttons.forEach((btn) => {
+      const movie = btn.getAttribute('data-movie');
+      const target = document.querySelector(`.tribute-quote[data-quote=\"${movie}\"]`);
+      const list = tributeQuotes[movie] || [];
+      if (!target || !list.length) return;
+      btn.addEventListener('click', () => {
+        const current = target.textContent || '';
+        let next = list[Math.floor(Math.random() * list.length)];
+        if (list.length > 1) {
+          while (next === current) {
+            next = list[Math.floor(Math.random() * list.length)];
+          }
+        }
+        target.textContent = next;
+        target.classList.remove('pop');
+        void target.offsetWidth;
+        target.classList.add('pop');
+      });
+    });
+  }
+
   function syncDecor() {
     if (garland) {
       garland.classList.toggle('off', !decor.lights);
@@ -131,6 +277,7 @@
   let flakes = [];
   let angle = 0;
   let burstBoost = 0;
+  const mouse = { x: 0, y: 0, active: false };
   let palette = [
     'rgba(255,255,255,0.9)',
     'rgba(225,59,63,0.85)',
@@ -210,6 +357,16 @@
     flakes.forEach((f, i) => {
       f.y += Math.cos(angle + f.d) + 1 + f.r * 0.4;
       f.x += Math.sin(angle) * wind + f.vx;
+      if (mouse.active) {
+        const dx = f.x - mouse.x;
+        const dy = f.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        if (dist < 160) {
+          const force = (160 - dist) / 160 * 0.55;
+          f.vx += (dx / dist) * force;
+          f.vy += (dy / dist) * force;
+        }
+      }
       if (f.burstLife && f.burstLife > 0) {
         f.x += f.vx * 1.2;
         f.y += f.vy * 1.2;
@@ -282,6 +439,14 @@
         populate();
       });
     }
+    window.addEventListener('mousemove', (e) => {
+      mouse.active = true;
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', () => {
+      mouse.active = false;
+    });
     if (windToggle) {
       windToggle.addEventListener('change', (e) => {
         settings.gust = e.target.checked;

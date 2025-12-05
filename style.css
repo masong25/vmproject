@@ -353,6 +353,18 @@ p { margin: 0; }
 
 .panel strong { color: var(--gold); }
 
+.tribute-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tribute-quote {
+  font-size: 18px;
+  color: var(--text);
+}
+
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -508,4 +520,5 @@ p { margin: 0; }
 @media (max-width: 720px) {
   .nav { flex-direction: column; align-items: flex-start; }
   .quote-box { flex-direction: column; }
+  .tribute-row { grid-template-columns: 1fr; }
 }

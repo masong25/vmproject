@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop Ops | Polar Overdrive</title>
+  <meta name="description" content="Elf analytics, production meters, and Santa approvals with shared interactive snow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-aurora"></div>
+  <canvas id="snow"></canvas>
+  <div class="page">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-mark">★NP</div>
+        <div>
+          <p class="eyebrow">north pole systems</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="workshop.html" class="active">Workshop Ops</a>
+        <a href="feast.html">Feast & Fire</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="pill">Elves at work</span>
+        <a class="btn primary" href="#lines">Refresh ops</a>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="glow"></div>
+      <div class="hero-text">
+        <p class="eyebrow">Workshop control</p>
+        <h1>Elf analytics with neon dashboards and falling snow.</h1>
+        <p class="lede">Toy trains, drones, plush squads, and candy QA—all visualized with glass cards. Snow engine stays synced with Home and Feast pages.</p>
+        <div class="cta-row">
+          <button class="btn primary" id="ops-refresh">Randomize metrics</button>
+          <a class="btn ghost" href="index.html">Back to home</a>
+          <span class="pill">Snow = interactive</span>
+        </div>
+        <div class="hero-grid">
+          <div class="stat-card">
+            <p class="label">Workstations online</p>
+            <strong>42</strong>
+            <p class="note">Spread across candy, assembly, QA.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Morale</p>
+            <strong>Radiant</strong>
+            <p class="note">Fueled by cocoa and synthwave carols.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Snow overlay</p>
+            <strong>Shared</strong>
+            <p class="note">Same storm controls apply here.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Santa approvals</p>
+            <strong>96%</strong>
+            <p class="note">Automated pings on every checklist.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panels">
+        <div class="panel" id="lines">
+          <p class="label">Production lines</p>
+          <h3>Throughput meters</h3>
+          <div class="meter" data-meter><span style="width: 86%;">Toy trains 86%</span></div>
+          <div class="meter" data-meter><span style="width: 78%;">RC drones 78%</span></div>
+          <div class="meter" data-meter><span style="width: 93%;">Plush squad 93%</span></div>
+          <div class="meter" data-meter><span style="width: 64%;">Candy QA 64%</span></div>
+          <p class="note">Hit "Randomize metrics" to reshuffle outputs.</p>
+        </div>
+        <div class="panel">
+          <p class="label">Santa checklist</p>
+          <h3>Approvals</h3>
+          <ul class="checklist">
+            <li>✔ Sleigh avionics tuned</li>
+            <li>✔ Naughty/Nice synced to cloud</li>
+            <li>✔ Cocoa reserve locked</li>
+            <li>✔ Route optimized around storms</li>
+            <li>⏳ Final suit lint-rolled</li>
+          </ul>
+          <p class="note">Snow bursts still fire when you click anywhere.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Crew roster</p>
+        <h2>Teams on shift</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Assembly North</h3>
+          <p class="note">Micro-soldering drones and plush stuffing line. Supervisor: Pippin.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Logistics East</h3>
+          <p class="note">Routing tags, inventory beacons, sleigh loader ops. Supervisor: Mistle.</p>
+        </div>
+        <div class="feature-card">
+          <h3>QA / Cocoa</h3>
+          <p class="note">Stress tests for RC batteries and cocoa sweetness QA. Supervisor: Tinsel.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Creative West</h3>
+          <p class="note">Wrapping, bows, storytelling tags, signature pine scent. Supervisor: Holly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Ops log</p>
+        <h2>Notes from the floor</h2>
+      </div>
+      <div class="grid-two">
+        <div class="panel">
+          <p class="label">Alerts</p>
+          <ul class="checklist">
+            <li>✔ Sleigh thrusters passed cold-start test</li>
+            <li>✔ Reindeer cardio cleared</li>
+            <li>✔ Elf shift rotations rebalanced</li>
+            <li>⏳ Final toy varnish drying</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <p class="label">Atmosphere</p>
+          <p class="note">Current soundtrack: 80s synth carols. Ambient lighting: aurora swirl. Cocoa machine: green button only.</p>
+          <div class="pill-row">
+            <span class="pill small">Aurora lights</span>
+            <span class="pill small">Cocoa IV</span>
+            <span class="pill small">Elf radio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="brand">
+        <div class="brand-mark">NP</div>
+        <div>
+          <p class="eyebrow">portal</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="workshop.html">Workshop Ops</a>
+        <a href="feast.html">Feast & Fire</a>
+      </div>
+      <p class="note">Storm controls persist across pages. Tap for bursts.</p>
+    </footer>
+  </div>
+  <script src="snow.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polar Overdrive | Interactive Snow + Neon Christmas</title>
+  <meta name="description" content="Multi-page Christmas overload with interactive snow, neon visuals, elf ops, and festive recipes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-aurora"></div>
+  <canvas id="snow"></canvas>
+  <div class="page">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-mark">★NP</div>
+        <div>
+          <p class="eyebrow">north pole systems</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="workshop.html">Workshop Ops</a>
+        <a href="feast.html">Feast & Fire</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="pill">Snow: interactive</span>
+        <a class="btn primary" href="#controls">Tune the blizzard</a>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="glow"></div>
+      <div class="hero-text">
+        <p class="eyebrow">Holiday hyperdrive</p>
+        <h1>Crazy visuals, live snow physics, and portals to every festive system.</h1>
+        <p class="lede">Dial the snowfall, trigger color storms, then hop to the Workshop and Feast pages for elf analytics and absurdly cozy recipes. It's the most extra North Pole dashboard you'll touch this year.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#controls">Control the storm</a>
+          <a class="btn ghost" href="workshop.html">Visit the workshop</a>
+          <span class="pill">3 pages · 1 blizzard engine</span>
+        </div>
+        <div class="hero-grid">
+          <div class="stat-card">
+            <p class="label">Live snowflakes</p>
+            <strong id="flake-count">--</strong>
+            <p class="note">Adjusted in real time by the controls below.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Color storms</p>
+            <strong>Reactive</strong>
+            <p class="note">Cycle aurora hues on demand.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Pages</p>
+            <strong>3</strong>
+            <p class="note">Home · Workshop Ops · Feast & Fire.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Interactivity</p>
+            <strong>High</strong>
+            <p class="note">Clicks spawn snow bursts anywhere.</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual panels">
+        <div class="panel">
+          <p class="label">Snow control deck</p>
+          <h3>Shape the weather</h3>
+          <div class="controls-grid" id="controls">
+            <div class="control">
+              <p>Density</p>
+              <input class="slider" id="snow-amount" type="range" min="40" max="500" value="180" />
+              <p class="note">More = wilder storms.</p>
+            </div>
+            <div class="control">
+              <p>Wind / swirl</p>
+              <div class="toggle-row">
+                <label><input type="checkbox" id="wind-toggle" /> Gusts</label>
+                <label><input type="checkbox" id="blizzard-toggle" /> Blizzard mode</label>
+              </div>
+              <p class="note">Gusts push flakes sideways. Blizzard doubles density.</p>
+            </div>
+            <div class="control">
+              <p>Actions</p>
+              <div class="toggle-row">
+                <button class="btn" id="burst-btn">Snow burst</button>
+                <button class="btn ghost" id="color-btn">Cycle colors</button>
+              </div>
+              <p class="note">Click anywhere on the screen for extra snow pops.</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <p class="label">Teleport links</p>
+          <h3>Jump to the other realms</h3>
+          <div class="pill-row">
+            <a class="pill" href="workshop.html">Workshop Ops</a>
+            <a class="pill" href="feast.html">Feast & Fire</a>
+          </div>
+          <p class="note" style="margin-top:10px;">Same snow engine runs everywhere—settings persist as you hop.</p>
+          <div class="meter"><span style="width: 78%;">Visual chaos 78%</span></div>
+          <div class="meter"><span style="width: 92%;">Holiday cheer 92%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Systems online</p>
+        <h2>What this portal powers</h2>
+        <p class="note">Three pages, all wired to the same interactive snowfield and neon glow stack.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Interactive snow physics</h3>
+          <p class="note">Canvas-driven flakes that respond to sliders, toggles, and clicks.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Aurora-grade visuals</h3>
+          <p class="note">Layered gradients, glass cards, and gold accents to keep it loud.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Elf analytics (Workshop)</h3>
+          <p class="note">Production meters, Santa approvals, and crew loadouts on their own page.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Feast & Fire page</h3>
+          <p class="note">Ridiculous recipe cards, drink pairings, and cozy prompts.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Quote pulse</h3>
+          <p class="note">Tap for fresh holiday movie quotes—animated pop on change.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Persistent style</h3>
+          <p class="note">Shared CSS + JS so every page stays synced to the same vibe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Quote pulse</p>
+        <h2>Holiday movie lines on tap</h2>
+      </div>
+      <div class="quote-box">
+        <p class="quote-text" id="quote-text">"Merry Christmas, ya filthy animal." — Home Alone 2</p>
+        <button class="btn primary" id="quote-btn">Shuffle quote</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Visual sampler</p>
+        <h2>Glows, glass, and gradients</h2>
+      </div>
+      <div class="gallery">
+        <div class="card-img">Aurora glass panels</div>
+        <div class="card-img">Candy cane meters</div>
+        <div class="card-img">North Star header</div>
+        <div class="card-img">Snowfield overlay</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="brand">
+        <div class="brand-mark">NP</div>
+        <div>
+          <p class="eyebrow">portal</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="workshop.html">Workshop Ops</a>
+        <a href="feast.html">Feast & Fire</a>
+      </div>
+      <p class="note">Snow follows you to every page. Tap anywhere for bursts.</p>
+    </footer>
+  </div>
+
+  <script src="snow.js" defer></script>
+</body>
+</html>

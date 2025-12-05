@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feast & Fire | Polar Overdrive</title>
+  <meta name="description" content="Over-the-top holiday recipes, drinks, and coziness—under the same interactive snowfield." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-aurora"></div>
+  <canvas id="snow"></canvas>
+  <div class="page">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-mark">★NP</div>
+        <div>
+          <p class="eyebrow">north pole systems</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="workshop.html">Workshop Ops</a>
+        <a href="feast.html" class="active">Feast & Fire</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="pill">Cozy core</span>
+        <a class="btn primary" href="#recipes">Shuffle specials</a>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="glow"></div>
+      <div class="hero-text">
+        <p class="eyebrow">Feast & firelight</p>
+        <h1>Blazing drinks, overbuilt treats, and snow cascading overhead.</h1>
+        <p class="lede">Shared neon aesthetic, shared snow engine. Trade sliders for cocoa, but keep the bursts coming.</p>
+        <div class="cta-row">
+          <button class="btn primary" id="feast-shuffle">Shuffle daily special</button>
+          <a class="btn ghost" href="index.html">Back to home</a>
+          <span class="pill">Snow persists</span>
+        </div>
+        <div class="hero-grid">
+          <div class="stat-card">
+            <p class="label">Recipes</p>
+            <strong>6</strong>
+            <p class="note">Cocoa, cookies, roasts, brunch, punch.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Drink pairings</p>
+            <strong>Curated</strong>
+            <p class="note">Cinnamon steam, spruce syrup, mulled spice.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Snow overlay</p>
+            <strong>Interactive</strong>
+            <p class="note">Clicks still spawn bursts.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Special</p>
+            <strong id="special">Maple-brûlé hot cocoa</strong>
+            <p class="note">Tap shuffle to change.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panels" id="recipes">
+        <div class="panel list-card">
+          <p class="label">Treats</p>
+          <h3>Table spread</h3>
+          <ul>
+            <li>Ridiculous hot cocoa with torched marshmallows</li>
+            <li>Gingerbread metropolis (with LED streetlamps)</li>
+            <li>Cranberry-orange shortbread w/ white chocolate drizzle</li>
+            <li>Roasted carrot + maple thyme tartlets</li>
+          </ul>
+        </div>
+        <div class="panel list-card">
+          <p class="label">Drinks</p>
+          <h3>Pairings</h3>
+          <ul>
+            <li>Spruce tip spritz with candied rosemary</li>
+            <li>Mulled cider with clove-smoked orange</li>
+            <li>Cardamom latte with cinnamon dust art</li>
+            <li>Frozen hot chocolate affogato (two extremes)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Fireplace scripts</p>
+        <h2>How to set the mood</h2>
+      </div>
+      <div class="grid-two">
+        <div class="panel">
+          <p class="label">Lighting</p>
+          <p class="note">Run aurora mode on smart lights, drop brightness to 38%, and let the snow cover your viewport.</p>
+          <div class="pill-row">
+            <span class="pill small">Aurora</span>
+            <span class="pill small">Candle flicker</span>
+            <span class="pill small">Fire crackle</span>
+          </div>
+        </div>
+        <div class="panel">
+          <p class="label">Soundtrack</p>
+          <p class="note">Lo-fi carols + vinyl crackle + distant sleigh bells. Keep the volume low enough to hear the snow in your head.</p>
+          <div class="meter"><span style="width: 68%;">Cozy factor 68%</span></div>
+          <div class="meter"><span style="width: 92%;">Sweetness 92%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Snow-channeled CTA</p>
+        <h2>Bring the blizzard back home</h2>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="index.html">Home portal</a>
+        <a class="btn ghost" href="workshop.html">Workshop Ops</a>
+        <span class="pill">Snow controls carry over</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="brand">
+        <div class="brand-mark">NP</div>
+        <div>
+          <p class="eyebrow">portal</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="workshop.html">Workshop Ops</a>
+        <a href="feast.html">Feast & Fire</a>
+      </div>
+      <p class="note">Same snowfield, different vibes. Click for bursts.</p>
+    </footer>
+  </div>
+  <script src="snow.js" defer></script>
+</body>
+</html>

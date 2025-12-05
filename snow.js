@@ -35,6 +35,7 @@
   const quotes = [
     '"The best way to spread Christmas cheer is singing loud for all to hear." — Elf',
     '"Merry Christmas, ya filthy animal." — Home Alone 2',
+    '"Keep the change, ya filthy animal." — Home Alone',
     '"Seeing isn\'t believing. Believing is seeing." — The Santa Clause',
     '"Light the lamp, not the rat!" — The Muppet Christmas Carol',
     '"Christmas isn\'t just a day, it\'s a frame of mind." — Miracle on 34th Street',
@@ -129,6 +130,7 @@
 
   let flakes = [];
   let angle = 0;
+  let burstBoost = 0;
   let palette = [
     'rgba(255,255,255,0.9)',
     'rgba(225,59,63,0.85)',
@@ -159,19 +161,24 @@
 
   function targetCount() {
     const base = settings.density;
-    return Math.floor(base * (settings.blizzard ? 1.8 : 1));
+    return Math.floor(base * (settings.blizzard ? 1.8 : 1)) + burstBoost;
   }
 
-  function addFlake(x = Math.random() * canvas.width, y = Math.random() * canvas.height) {
+  function addFlake(x = Math.random() * canvas.width, y = Math.random() * canvas.height, impulse = null) {
     const colorSet = palette;
     const color = colorSet[Math.floor(Math.random() * colorSet.length)];
+    const baseVx = Math.random() * 0.6 - 0.3;
+    const baseVy = Math.random() * 1.2 + 0.4;
+    const ivx = impulse ? impulse.vx : 0;
+    const ivy = impulse ? impulse.vy : 0;
     flakes.push({
       x,
       y,
       r: Math.random() * 3 + 1,
       d: Math.random() * 360,
-      vx: Math.random() * 0.6 - 0.3,
-      vy: Math.random() * 1.2 + 0.4,
+      vx: baseVx + ivx,
+      vy: baseVy + ivy,
+      burstLife: impulse ? impulse.life : 0,
       color
     });
   }
@@ -203,6 +210,13 @@
     flakes.forEach((f, i) => {
       f.y += Math.cos(angle + f.d) + 1 + f.r * 0.4;
       f.x += Math.sin(angle) * wind + f.vx;
+      if (f.burstLife && f.burstLife > 0) {
+        f.x += f.vx * 1.2;
+        f.y += f.vy * 1.2;
+        f.vx *= 0.98;
+        f.vy *= 0.98;
+        f.burstLife -= 1;
+      }
 
       if (f.y > canvas.height) {
         flakes[i] = { ...f, x: Math.random() * canvas.width, y: -10 };
@@ -217,12 +231,22 @@
     populate();
     move();
     draw();
+    if (burstBoost > 0) {
+      burstBoost = Math.max(0, burstBoost - 1);
+    }
     requestAnimationFrame(animate);
   }
 
   function addBurst(x, y) {
-    for (let i = 0; i < 28; i++) addFlake(x + (Math.random() - 0.5) * 80, y + (Math.random() - 0.5) * 80);
-    populate();
+    for (let i = 0; i < 36; i++) {
+      const ang = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 80;
+      const px = x + Math.cos(ang) * dist;
+      const py = y + Math.sin(ang) * dist;
+      const impulse = { vx: Math.cos(ang) * 1.8, vy: Math.sin(ang) * 1.8, life: 35 };
+      addFlake(px, py, impulse);
+    }
+    burstBoost = Math.min(240, burstBoost + 60);
   }
 
   function startPaletteCycle() {

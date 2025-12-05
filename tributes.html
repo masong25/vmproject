@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Tributes | Polar Overdrive</title>
+  <meta name="description" content="Dedicated tribute page for the greatest Christmas movies with snow, lights, and countdown." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-aurora"></div>
+  <div class="aura"></div>
+  <div class="workshop-bg" id="workshop-bg"></div>
+  <canvas id="snow"></canvas>
+  <div class="garland" id="garland" aria-hidden="true">
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light gold"></div>
+    <div class="light blue"></div>
+    <div class="light red"></div>
+    <div class="light green"></div>
+    <div class="light gold"></div>
+    <div class="light blue"></div>
+  </div>
+  <div class="floating-countdown" aria-live="polite">
+    <h4>Countdown to Christmas</h4>
+    <div class="countdown-grid">
+      <div><span class="countdown-days">--</span><small>Days</small></div>
+      <div><span class="countdown-hours">--</span><small>Hours</small></div>
+      <div><span class="countdown-minutes">--</span><small>Mins</small></div>
+      <div><span class="countdown-seconds">--</span><small>Secs</small></div>
+    </div>
+    <p class="note countdown-note">Auto-resets after 12/25.</p>
+  </div>
+  <div class="page">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-mark">★NP</div>
+        <div>
+          <p class="eyebrow">north pole systems</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="workshop.html">Workshop Ops</a>
+        <a href="feast.html">Feast & Fire</a>
+        <a href="tributes.html" class="active">Tributes</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="pill">Lights + Snow</span>
+        <a class="btn primary" href="#movies">Jump to movies</a>
+      </div>
+    </header>
+    <div class="decor-controls">
+      <button class="btn" id="lights-btn">Toggle lights</button>
+      <button class="btn ghost" id="twinkle-btn">Twinkle boost</button>
+      <button class="btn ghost" id="workshop-btn">Workshop backdrop</button>
+      <button class="btn" id="cozy-btn">Cozy tone</button>
+      <button class="btn" id="burst-btn">Snow burst</button>
+      <button class="btn ghost" id="color-btn">Cycle snow colors</button>
+    </div>
+
+    <section class="hero" id="top">
+      <div class="glow"></div>
+      <div class="hero-text">
+        <p class="eyebrow">Tribute hub</p>
+        <h1>Every must-watch Christmas movie gets its own spotlight.</h1>
+        <p class="lede">Snowfall, countdown, and garland lights wrap around ten classics—from Home Alone traps to the Polar Express bell. Hover in the neon North Pole while you pick tonight’s film.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#movies">Browse tributes</a>
+          <a class="btn ghost" href="index.html">Back to home</a>
+          <span class="pill">Snow + lights stay on</span>
+        </div>
+        <div class="hero-grid">
+          <div class="stat-card">
+            <p class="label">Movies</p>
+            <strong>10</strong>
+            <p class="note">Each gets a mini tribute.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Quotes</p>
+            <strong>Live</strong>
+            <p class="note">Shuffle on Home for classics.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Snow overlay</p>
+            <strong>Interactive</strong>
+            <p class="note">Bursts + color cycles stay synced.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Countdown</p>
+            <strong class="countdown-days">--</strong>
+            <p class="note">Days till Christmas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panels" id="movies">
+        <div class="panel list-card">
+          <p class="label">How to watch</p>
+          <p class="note">Flip on cozy mode for warmer tones, keep lights twinkling, and let the snowfall run. Scroll for tributes, pick a movie, and hit play.</p>
+          <div class="pill-row">
+            <span class="pill small">Cozy tone</span>
+            <span class="pill small">Lights on</span>
+            <span class="pill small">Snow bursts</span>
+          </div>
+        </div>
+        <div class="panel list-card">
+          <p class="label">Snack pairing</p>
+          <p class="note">Hot cocoa + gingerbread for the classics. Pizza + Pepsi for Home Alone. Popcorn + sparkling cider for everything else.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Tributes</p>
+        <h2>Iconic holiday films, one card each.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Home Alone (1990)</h3>
+          <p class="note">Kevin vs. Wet Bandits. Paint cans, toy cars, furnace fear, and cheese pizza supremacy.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Home Alone 2 (1992)</h3>
+          <p class="note">Talkboy pranks, Plaza hijinks, Central Park redemption—and a pigeon-powered assist.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Elf (2003)</h3>
+          <p class="note">Buddy’s four food groups, Gimbels decorations, and singing loud for all to hear.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Christmas Vacation (1989)</h3>
+          <p class="note">Clark’s light extravaganza, squirrel chase, and Jelly of the Month meltdown.</p>
+        </div>
+        <div class="feature-card">
+          <h3>The Santa Clause (1994)</h3>
+          <p class="note">Accidental Santa, North Pole factory reveal, and sleigh test flights over the city.</p>
+        </div>
+        <div class="feature-card">
+          <h3>How the Grinch Stole Christmas (2000)</h3>
+          <p class="note">Whoville glow, Mount Crumpit sled, and a heart that grows three sizes.</p>
+        </div>
+        <div class="feature-card">
+          <h3>It’s a Wonderful Life (1946)</h3>
+          <p class="note">George Bailey learns his impact. Every time a bell rings, an angel gets wings.</p>
+        </div>
+        <div class="feature-card">
+          <h3>The Polar Express (2004)</h3>
+          <p class="note">The bell still rings. Hot chocolate car, rooftop run, and the North Pole square.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Miracle on 34th Street (1947)</h3>
+          <p class="note">Courtroom Santa proves belief matters—letters, gavel, and the real deal Kris Kringle.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Klaus (2019)</h3>
+          <p class="note">Handcrafted toys, frozen fjords, and a story about how kindness catches on.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Extra vibes</p>
+        <h2>Set the room like a movie night.</h2>
+      </div>
+      <div class="grid-two">
+        <div class="panel">
+          <p class="label">Lighting & sound</p>
+          <p class="note">Switch to cozy, keep garlands on, queue the soundtrack (Home Alone suite + Elf carols + Carol of the Bells), and let the snow fall.</p>
+        </div>
+        <div class="panel">
+          <p class="label">Interactive snow</p>
+          <p class="note">Click anywhere for bursts, toggle blizzard on Home controls, or cycle colors for a finale.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="brand">
+        <div class="brand-mark">NP</div>
+        <div>
+          <p class="eyebrow">portal</p>
+          <p class="brand-title">Polar Overdrive</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="workshop.html">Workshop Ops</a>
+        <a href="feast.html">Feast & Fire</a>
+        <a href="tributes.html" class="active">Tributes</a>
+      </div>
+      <p class="note">Same snow + lights across every page. Tap for bursts anytime.</p>
+    </footer>
+  </div>
+
+  <script src="snow.js" defer></script>
+</body>
+</html>

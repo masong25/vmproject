@@ -293,6 +293,50 @@ p { margin: 0; }
 
 .meter span { display: block; padding: 8px; background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #04080f; font-weight: 700; }
 
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.countdown-grid span {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.countdown-grid small {
+  color: var(--muted);
+}
+
+.floating-countdown {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--outline);
+  background: rgba(8, 12, 25, 0.8);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  max-width: 340px;
+}
+
+.floating-countdown h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.floating-countdown .countdown-grid span {
+  font-size: 28px;
+}
+
 .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
 
 .pill.small { font-size: 11px; padding: 6px 10px; }

@@ -13,6 +13,16 @@
 <body>
   <div class="background-aurora"></div>
   <canvas id="snow"></canvas>
+  <div class="floating-countdown" aria-live="polite">
+    <h4>Countdown to Christmas</h4>
+    <div class="countdown-grid">
+      <div><span class="countdown-days">--</span><small>Days</small></div>
+      <div><span class="countdown-hours">--</span><small>Hours</small></div>
+      <div><span class="countdown-minutes">--</span><small>Mins</small></div>
+      <div><span class="countdown-seconds">--</span><small>Secs</small></div>
+    </div>
+    <p class="note countdown-note">Auto-resets after 12/25.</p>
+  </div>
   <div class="page">
     <header class="nav">
       <div class="brand">
@@ -59,6 +69,16 @@
             <p class="label">Snow overlay</p>
             <strong>Shared</strong>
             <p class="note">Same storm controls apply here.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Christmas countdown</p>
+            <div class="countdown-grid">
+              <div><span class="countdown-days">--</span><small>Days</small></div>
+              <div><span class="countdown-hours">--</span><small>Hours</small></div>
+              <div><span class="countdown-minutes">--</span><small>Mins</small></div>
+              <div><span class="countdown-seconds">--</span><small>Secs</small></div>
+            </div>
+            <p class="note countdown-note">Auto-resets after 12/25.</p>
           </div>
           <div class="stat-card">
             <p class="label">Santa approvals</p>

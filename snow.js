@@ -70,6 +70,34 @@
     });
   }
 
+  const countdown = {
+    days: Array.from(document.querySelectorAll('.countdown-days')),
+    hours: Array.from(document.querySelectorAll('.countdown-hours')),
+    minutes: Array.from(document.querySelectorAll('.countdown-minutes')),
+    seconds: Array.from(document.querySelectorAll('.countdown-seconds')),
+    notes: Array.from(document.querySelectorAll('.countdown-note'))
+  };
+
+  function updateCountdown() {
+    if (!countdown.days.length) return;
+    const now = new Date();
+    const year = now.getMonth() === 11 && now.getDate() > 25 ? now.getFullYear() + 1 : now.getFullYear();
+    const target = new Date(year, 11, 25, 0, 0, 0);
+    const diff = target - now;
+    const totalSeconds = Math.max(0, Math.floor(diff / 1000));
+    const seconds = totalSeconds % 60;
+    const minutes = Math.floor(totalSeconds / 60) % 60;
+    const hours = Math.floor(totalSeconds / 3600) % 24;
+    const days = Math.floor(totalSeconds / 86400);
+    countdown.days.forEach((el) => (el.textContent = days));
+    countdown.hours.forEach((el) => (el.textContent = hours.toString().padStart(2, '0')));
+    countdown.minutes.forEach((el) => (el.textContent = minutes.toString().padStart(2, '0')));
+    countdown.seconds.forEach((el) => (el.textContent = seconds.toString().padStart(2, '0')));
+    countdown.notes.forEach((el) => {
+      el.textContent = totalSeconds === 0 ? 'It is Christmas! Auto-rolls to next year soon.' : 'Auto-resets after 12/25.';
+    });
+  }
+
   let flakes = [];
   let angle = 0;
   let palette = [
@@ -239,4 +267,6 @@
   if (settings.colorCycle) startPaletteCycle();
   window.addEventListener('resize', resize);
   animate();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 })();
